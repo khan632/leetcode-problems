@@ -1,0 +1,45 @@
+// here we add two numbers, but the numbers are given in linked list and in reverse order and we have to print in reverse order also
+
+
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    //create a new linkNode and ste its value to 0
+        ListNode ans = new ListNode(0);
+        ListNode p = ans;
+        //connect the both given linkNode to a temporary linkNode for future use
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        
+        int carry = 0;
+        while(p1 != null || p2 != null){
+            int sum = carry;
+            
+            if(p1 != null){
+                sum += p1.val;
+                p1 = p1.next;
+            }
+            
+            if(p2 != null){
+                sum += p2.val;
+                p2 = p2.next;
+            }
+            
+            if(sum > 9){
+                carry = 1;
+                sum -= 10;
+                
+            } else{
+                carry = 0;
+            }
+            ListNode l = new ListNode(sum);
+            p.next = l;
+            p = p.next;
+        }
+        
+        if(carry > 0){
+            ListNode l = new ListNode(carry);
+            p.next = l;
+        }
+        return ans.next;
+    }
+}
