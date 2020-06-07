@@ -1,0 +1,30 @@
+// here i am using three pointers in it but u can do it by hashmap also
+ int i1 = nums1.length;
+        int i2 = nums2.length;
+        int i3 = i1+i2;
+        int []nums3 = new int [i3];
+        int i = 0, j = 0, k = 0;
+        while(i < i1 && j < i2){
+            if(nums1[i] < nums2[j]){
+                nums3[k++] = nums1[i++];
+            }else {
+                nums3[k++] = nums2[j++];
+            }
+        }
+        
+        while(i < i1){
+            nums3[k++] = nums1[i++];
+        }
+        
+        while(j < i2){
+            nums3[k++] = nums2[j++];
+        }
+        
+        if(i3 % 2 != 0){
+            return nums3[i3 / 2];
+        }
+        
+        int mid = i3 / 2;
+        return (double) (nums3[mid] + nums3[mid - 1]) / 2;
+        }
+}
