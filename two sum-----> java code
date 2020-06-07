@@ -1,0 +1,54 @@
+//here we only upload the pseudo code of program.... The main program u should ready ur self
+
+1. BRUTE FORCE METHOD
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int complement; 
+        //loop to check every element in the array
+        for (int x = 0; x<nums.length; x++) {  
+            complement = target - nums[x];
+            //loop to find complement of current element
+            for (int y = 0; y<nums.length; y++) { 
+                //we cannot use same element twice.
+                if (x ==  y) { continue; } 
+                if (nums[y] == complement) {
+                    return new int[] {x, y};
+                }
+            }            
+        }
+        return new int[] {0, 0};
+    }
+}
+
+
+2. Using Hashmap:
+
+//HashMap is a part of Java’s collection since Java 1.2. It provides the basic implementation of the Map interface of Java. It stores //the data in (Key, Value) pairs. To access a value one must know its key. HashMap is known as HashMap because it uses a technique //called Hashing. Hashing is a technique of converting a large String to small String that represents the same String. A shorter value //helps in indexing and faster searches. HashSet also uses HashMap internally.
+
+
+
+
+class Solution {
+    public int[] twoSum(int[] a, int target) {
+    // here we create an answer array because program retunr an array
+        int ans [] = new int [2];
+        //create an hashmap
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int i = 0; i < a.length; i++){
+        //cheak for whether target-arr[i] present or not if yes,
+        //then assign i value to its 1st index and target-arr[i] at 0 index
+        
+            if (map.containsKey(target - a[i])) {
+                ans[1] = i;
+                ans[0] = map.get(target-a[i]);
+            } 
+            //else push simple arr[index] ans index 
+            else{
+                map.put(a[i],i);
+            }
+        }
+        return ans;
+    }
+}
